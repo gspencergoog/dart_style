@@ -47,7 +47,7 @@ class Rule extends FastHash {
   bool get isHardened => _isHardened;
   bool _isHardened = false;
 
-  /// The other [Rule]s that are implied this one.
+  /// The other [Rule]s that are implied by this one.
   ///
   /// In many cases, if a split occurs inside an expression, surrounding rules
   /// also want to split too. For example, a split in the middle of an argument

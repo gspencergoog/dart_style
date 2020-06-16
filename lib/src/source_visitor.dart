@@ -1473,7 +1473,7 @@ class SourceVisitor extends ThrowingAstVisitor {
 
     _metadataRules.add(MetadataRule());
 
-    var rule;
+    PositionalRule rule;
     if (requiredParams.isNotEmpty) {
       rule = PositionalRule(null, 0, 0);
       _metadataRules.last.bindPositionalRule(rule);
@@ -1503,7 +1503,7 @@ class SourceVisitor extends ThrowingAstVisitor {
     }
 
     if (optionalParams.isNotEmpty) {
-      var namedRule = NamedRule(null, 0, 0);
+      NamedRule namedRule = NamedRule(null, 0, 0);
       if (rule != null) rule.setNamedArgsRule(namedRule);
 
       _metadataRules.last.bindNamedRule(namedRule);
@@ -1982,10 +1982,11 @@ class SourceVisitor extends ThrowingAstVisitor {
         builder.indent();
         builder.startRule();
 
-        // If there is an else clause, always split before both the then and
-        // else statements.
-        if (node.elseStatement != null) {
-          builder.writeWhitespace(Whitespace.newline);
+        // If there is an else clause, or we want it to be always on the next
+        // line, always split before both the then and else statements.
+        if (node.elseStatement != null ||
+            _formatter.wrapOneStatementIfs) {
+          newline();
         } else {
           builder.split(nest: false, space: true);
         }

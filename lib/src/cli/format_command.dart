@@ -88,6 +88,8 @@ class FormatCommand extends Command {
           '"${argResults['line-length']}".');
     }
 
+    bool wrapOneStatementIfs = argResults['wrap-conditional'] as bool;
+
     int indent;
     try {
       indent = int.parse(argResults['indent']);
@@ -137,7 +139,8 @@ class FormatCommand extends Command {
     var options = FormatterOptions(
         indent: indent,
         pageWidth: pageWidth,
-        followLinks: followLinks,
+        wrapOneStatementIfs: wrapOneStatementIfs,
+        followLinks: followLinks as bool,
         fixes: fixes,
         show: show,
         output: output,

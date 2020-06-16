@@ -103,6 +103,7 @@ void main(List<String> args) {
   }
 
   var followLinks = argResults['follow-links'];
+  var wrapOneStatementIfs = argResults['wrap-one-statement-ifs'];
 
   var fixes = <StyleFix>[];
   if (argResults['fix']) fixes.addAll(StyleFix.all);
@@ -123,6 +124,7 @@ void main(List<String> args) {
   var options = FormatterOptions(
       indent: indent,
       pageWidth: pageWidth,
+      wrapOneStatementIfs: wrapOneStatementIfs,
       followLinks: followLinks,
       fixes: fixes,
       show: show,

@@ -24,6 +24,9 @@ class FormatterOptions {
   /// within.
   final int pageWidth;
 
+  /// Whether or not the body of a conditional should be on the next line.
+  final bool wrapOneStatementIfs;
+
   /// Whether symlinks should be traversed when formatting a directory.
   final bool followLinks;
 
@@ -44,6 +47,7 @@ class FormatterOptions {
   FormatterOptions(
       {this.indent = 0,
       this.pageWidth = 80,
+      this.wrapOneStatementIfs = true,
       this.followLinks = false,
       this.fixes,
       this.show = Show.changed,

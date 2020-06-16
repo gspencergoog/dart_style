@@ -56,6 +56,10 @@ void defineOptions(ArgParser parser, {bool oldCli = false}) {
 
   parser.addSeparator('Non-whitespace fixes (off by default):');
   parser.addFlag('fix', negatable: false, help: 'Apply all style fixes.');
+  parser.addFlag('wrap-one-statement-ifs',
+      negatable: true,
+      help: 'Forces the body of one-statement if statements to be on the next line.',
+      defaultsTo: true);
 
   for (var fix in StyleFix.all) {
     // TODO(rnystrom): Allow negating this if used in concert with "--fix"?

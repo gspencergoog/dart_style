@@ -33,6 +33,9 @@ class DartFormatter {
   /// The number of characters allowed in a single line.
   final int pageWidth;
 
+  /// Puts the body of an if statement that doesn't have braces on the next line.
+  final bool wrapOneStatementIfs;
+
   /// The number of characters of indentation to prefix the output lines with.
   final int indent;
 
@@ -48,9 +51,13 @@ class DartFormatter {
   /// before each resulting line in the output.
   ///
   /// While formatting, also applies any of the given [fixes].
-  DartFormatter(
-      {this.lineEnding, int pageWidth, int indent, Iterable<StyleFix> fixes})
-      : pageWidth = pageWidth ?? 80,
+  DartFormatter({
+    this.lineEnding,
+    int pageWidth,
+    int indent,
+    Iterable<StyleFix> fixes,
+    this.wrapOneStatementIfs = true,
+  })  : pageWidth = pageWidth ?? 80,
         indent = indent ?? 0 {
     if (fixes != null) this.fixes.addAll(fixes);
   }

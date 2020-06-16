@@ -28,6 +28,7 @@ void formatStdin(FormatterOptions options, List<int> selection, String name) {
   stdin.transform(Utf8Decoder()).listen(input.write, onDone: () {
     var formatter = DartFormatter(
         indent: options.indent,
+        wrapOneStatementIfs: options.wrapOneStatementIfs,
         pageWidth: options.pageWidth,
         fixes: options.fixes);
     try {
@@ -134,6 +135,7 @@ bool processFile(FormatterOptions options, File file, {String displayPath}) {
 
   var formatter = DartFormatter(
       indent: options.indent,
+      wrapOneStatementIfs: options.wrapOneStatementIfs,
       pageWidth: options.pageWidth,
       fixes: options.fixes);
   try {
